@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<img id="imgA" src="./a.jpg">
+
+<body>
+
+    <canvas id="test_canvas" width=512 height=512 style="border: 1px solid;"></canvas>
+
+    <script type="module" src='./dist/indext.js'>
+        var test_context = document.getElementById('test_canvas').getContext('2d');
+
+        var image_data = document.getElementById("imgA");
+        var n = UnsharpMask(image_data);
+
+        test_context.putImageData(n, 0, 0);
+    </script>
+
+</body>
+
+</html>
