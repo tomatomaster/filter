@@ -1,14 +1,13 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 const sharpenForce = 1;
 const kernel = [[0, -1 * sharpenForce, 0],
-[-1 * sharpenForce, (4 * sharpenForce) + 1, -1 * sharpenForce],
-[0, -1 * sharpenForce, 0]];
-export function UnsharpMask(rawImage, width, height) {
+    [-1 * sharpenForce, (4 * sharpenForce) + 1, -1 * sharpenForce],
+    [0, -1 * sharpenForce, 0]];
+function UnsharpMask(rawImage) {
     const pixel = rawImage.data;
     const img = new ImageData(rawImage.width, rawImage.height);
+    const width = rawImage.width;
     for (let h = 1; h < rawImage.height - 1; h++) {
-        for (let w = 1; w < rawImage.height - 1; w++) {
+        for (let w = 1; w < rawImage.width - 1; w++) {
             let nR = 0;
             let nG = 0;
             let nB = 0;
@@ -32,4 +31,4 @@ export function UnsharpMask(rawImage, width, height) {
     }
     return img;
 }
-exports.default = UnsharpMask;
+export default UnsharpMask;
